@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SFPIRG Board of Directors 2021 Nomination Signature Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="robots" content="noindex">
+<style>
+@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);
+@import url(http://fonts.googleapis.com/css?family=Arapey);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800);
+body {
+    font-family: "Libre Baskerville", serif;
+    font-size:16px;
+    line-height:1.5em;
+    color:#000;
+    margin:0;
+    background:#fff;
+}
+@media (max-width:600px) {
+    body { font-size:14px; }
+}
+
+@media screen {
+    #client_signature{display:none}
+}
+
+@media print {
+   .noprint { display:none !important; }
+    #client_signature { border:dashed 2px #53777A;}
+}
+.hidden {
+    display:none;
+}
+#content {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 3em;
+    padding: 0 2em;
+    background: #fff;
+}
+h1 {
+    font-size: 2em;
+    line-height: 1.2em;
+    letter-spacing: 0.15em;
+    font-family: "Arapey", serif;
+    font-weight: normal;
+    margin: 1em 0;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    padding: .5em 0;
+}
+h2 {
+    font-size:1.2em;
+    line-height:1.2em;
+    letter-spacing:.05em;
+    font-family:"Open Sans Condensed",sans-serif;
+    font-weight:700;
+}
+#signature {
+    width:auto;
+    border:dashed 2px #53777A;
+    margin:0;
+    text-align:center;
+}
+#hk,
+#dev_signature {
+    max-width:3px;
+    display:block;
+}
+#date-ip {
+    font-size:1.2em;
+    line-height:1.2em;
+    letter-spacing:.05em;
+    font-family:"Open Sans Condensed",sans-serif;
+    font-weight:400;
+}
+#print-pdf {
+    text-align:center;
+    padding:1em 0;
+    margin-top:2em;
+    border-top:solid 1px #ccc;
+}
+
+.buttons {
+    text-align:center;
+    margin:1.5em auto;
+}
+button {
+    margin: 0 .5em;
+    font-size:1.2em;
+    line-height:1.5em;
+    font-family: "Open Sans Condensed",sans-serif;
+    font-weight: 700;
+    text-transform:uppercase;
+    color: #0a3666;
+}
+button:hover {
+    color: #136fd2;
+}
+</style>
+</head>
+<body>
+<div id="content">
+<div id="section1">
+<h1>SFPIRG Board of Directors 2021 Nomination Signature Form</h1>
+<p>This form is for Simon Fraser Public Interest Research Group (SFPIRG) members
+nominating a candidate to the SFPIRG Board of Directors for the May 2021 – April 2022
+term.</p>
+<p>Nominees are required to submit to SFPIRG the name, student number, and signatures
+of ten (10) members in good standing approving their nomination. Typed “signatures”
+are not permitted.</p>
+<h4>With my signature below, I declare my nomination for [candidate name]:</h4>
+</div>
+<input type="text" id="candidate_name" name="candidate_name" placeholder="Candidate Name">
+<br>
+
+<p>I further certify that my membership in SFPIRG is in good standing.
+A member in good standing is an SFU student who is currently enrolled at SFU and has
+not requested a fee refund from SFPIRG, or a community (Associate) member who has
+paid their fee within the current academic year (September 2020-August 2021).</p>
+
+<h4>Member Name:</h4>
+<input type="text" id="member_name" name="member_name" placeholder="Member Name">
+<br>
+
+<h4>SFU Student Number (or indicate "AM" for Associate Member")</h4>
+<input type="text" id="student_number" name="student_number" placeholder="SFU Student Number">
+<br>
+<h4>Signature</h4>
+  <form method="post" class="noprint" id="signature_form">
+    <div id="signature">
+      <!-- Client Signature Canvas -->
+    </div>
+    <div class="buttons">
+    <p style="font-size:13px">Instruction: When ready, click "Download PDF". A printing prompt will appear. Select the destination as "Save as PDF". This will save a PDF copy onto your computer.</p>
+      <button id="reset" type="button">Reset</button>
+      <button id="submit" type="button" onclick="window.print();">Download PDF &darr;</button>
+    </div>
+    
+  </form>
+  <img id="client_signature" name="client_signature" />
+</div> <!-- #content -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- https://github.com/brinley/jSignature/blob/master/README.md -->
+<script src="https://cdn.rawgit.com/willowsystems/jSignature/master/libs/jSignature.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js'></script>
+
+
+<script>
+$(document).ready(function() {
+  $("#signature").jSignature();
+  var $sigdiv = $("#signature");
+  var datapair = $sigdiv.jSignature("getData", "svgbase64");
+  $("#signature").bind("change", function(e) {
+    var data = $("#signature").jSignature("getData");
+    $("#client_signature").attr("src", data);
+  });
+  $("#reset").click(function(e){
+    $("#signature").jSignature("clear");
+    var data = $("#signature").jSignature("getData");
+    $("#client_signature").val("");
+    e.preventDefault();
+    })
+
+});
+</script>
+</body>
+</html>'
